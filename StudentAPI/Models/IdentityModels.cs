@@ -24,10 +24,14 @@ namespace StudentAPI.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
+        public object Student { get; internal set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<StudentAPI.Models.Student> Students { get; set; }
     }
 }

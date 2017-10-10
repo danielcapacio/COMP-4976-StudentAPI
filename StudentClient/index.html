@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <h3>Cors Request</h3>
+    <form id="frmRegister">
+        <input type="text" name="Email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <input type="password" name="confirmPassword" placeholder="Confirm Password" />
+        <input type="button" id="btnRegister" value="Register" />
+    </form>
+    <button id="btnGetPatients">Get Patients</button>
+    <pre id="preOutput"></pre>
+    <script src="Scripts/jquery-3.2.1.js"></script>
+    <script>
+        $(function () {
+            var getPatients = function () {
+                var url = "http://localhost:55436/api/patients/";
+                $.get(url).always(showResponse);
+                return false;
+            };
+
+            var showResponse = function (object) {
+                $("#preOutput").text(JSON.stringify(object, null, 4));
+            };
+
+            $("#btnGetPatients").click(getPatients);
+
+            var register = function () {
+                var url = "http://localhost:55436/api/account/register";
+                var data = $("#frmRegister").serialize();
+                $.post(url, data).always(showResponse);
+                return false;
+            };
+
+            $("#btnRegister").click(register);
+        });
+    </script>
+
+</body>
+</html>

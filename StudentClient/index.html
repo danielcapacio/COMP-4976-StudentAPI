@@ -19,7 +19,7 @@
     <script>
         $(function () {
             var getPatients = function () {
-                var url = "http://localhost:55436/api/patients/";
+                var url = "http://comp4976studentapi.azurewebsites.net/api/patients/";
                 $.get(url).always(showResponse);
                 return false;
             };
@@ -31,7 +31,7 @@
             $("#btnGetPatients").click(getPatients);
 
             var register = function () {
-                var url = "http://localhost:55436/api/account/register";
+                var url = "http://comp4976studentapi.azurewebsites.net/api/account/register";
                 var data = $("#frmRegister").serialize();
                 $.post(url, data).always(showResponse);
                 return false;

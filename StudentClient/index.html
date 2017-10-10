@@ -13,6 +13,12 @@
         <input type="password" name="confirmPassword" placeholder="Confirm Password" />
         <input type="button" id="btnRegister" value="Register" />
     </form>
+    <hr />
+    <form id="frmLogin">
+        <input type="text" name="userName" placeholder="UserName" />
+        <input type="password" name="password" placeholder="Password" />
+        <input type="button" id="btnLogin" value="Login" />
+    </form>
     <button id="btnGetPatients">Get Patients</button>
     <pre id="preOutput"></pre>
     <script src="Scripts/jquery-3.2.1.js"></script>
@@ -38,6 +44,16 @@
             };
 
             $("#btnRegister").click(register);
+
+            var login = function () {
+                var url = "/Token";
+                var data = $("#frmLogin").serialize();
+                data += "&grant_type=password";
+                $.post(url, data).always(showResponse);
+                return false;
+            };
+
+            $("#btnLogin").click(login);
         });
     </script>
 

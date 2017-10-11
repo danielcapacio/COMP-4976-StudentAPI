@@ -19,7 +19,7 @@
         <input type="password" name="password" placeholder="Password" />
         <input type="button" id="btnLogin" value="Login" />
     </form>
-    <button id="btnGetPatients">Get Patients</button>
+    <button id="btnGetStudents">Get Students</button>
     <pre id="preOutput"></pre>
     <script src="Scripts/jquery-3.2.1.js"></script>
     <script>
@@ -37,7 +37,7 @@
                 $("#preOutput").text(JSON.stringify(object, null, 4));
             };
 
-            $("#btnGetPatients").click(getPatients);
+            $("#btnGetStudents").click(getStudents);
 
             var register = function () {
                 var url = "http://comp4976studentapi.azurewebsites.net/api/account/register";

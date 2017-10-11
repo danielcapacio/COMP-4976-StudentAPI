@@ -24,9 +24,12 @@
     <script src="Scripts/jquery-3.2.1.js"></script>
     <script>
         $(function () {
-            var getPatients = function () {
-                var url = "http://comp4976studentapi.azurewebsites.net/api/patients/";
-                $.get(url).always(showResponse);
+            var getStudents = function () {
+                var url = baseUrl + "api/students/";
+                $.ajax(url, {
+                    type: "GET",
+                    headers: getHeaders()
+                }).always(showResponse);
                 return false;
             };
 
@@ -45,15 +48,29 @@
 
             $("#btnRegister").click(register);
 
+            var accessToken = "";
+
             var login = function () {
-                var url = "http://comp4976studentapi.azurewebsites.net/Token";
+                var url = "/Token";
                 var data = $("#frmLogin").serialize();
                 data += "&grant_type=password";
-                $.post(url, data).always(showResponse);
+                $.post(url, data)
+                    .success(saveAccessToken)
+                    .always(showResponse);
                 return false;
             };
 
             $("#btnLogin").click(login);
+
+            var saveAccessToken = function (data) {
+                accessToken = data.access_token;
+            };
+
+            var getHeaders = function () {
+                if (accessToken) {
+                    return { "Authorization": "Bearer " + accessToken };
+                }
+            };
         });
     </script>
 

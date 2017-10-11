@@ -46,7 +46,7 @@
             $("#btnRegister").click(register);
 
             var login = function () {
-                var url = "/Token";
+                var url = "http://comp4976studentapi.azurewebsites.net/Token";
                 var data = $("#frmLogin").serialize();
                 data += "&grant_type=password";
                 $.post(url, data).always(showResponse);

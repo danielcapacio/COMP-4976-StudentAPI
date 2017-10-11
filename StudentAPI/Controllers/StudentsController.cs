@@ -14,7 +14,7 @@ using System.Web.Http.Cors;
 
 namespace StudentAPI.Controllers
 {
-    [EnableCors("*", "*", "GET")]
+    [EnableCors("*", "*", "*")]
     [Authorize]
     public class StudentsController : ApiController
     {

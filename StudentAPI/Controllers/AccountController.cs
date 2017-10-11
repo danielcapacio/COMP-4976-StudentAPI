@@ -16,9 +16,11 @@ using Microsoft.Owin.Security.OAuth;
 using StudentAPI.Models;
 using StudentAPI.Providers;
 using StudentAPI.Results;
+using System.Web.Http.Cors;
 
 namespace StudentAPI.Controllers
 {
+    [EnableCors("*", "*", "*")]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController

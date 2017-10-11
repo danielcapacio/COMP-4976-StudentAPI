@@ -37,7 +37,7 @@
             };
 
             var getStudents = function () {
-                var url = baseUrl + "api/students/";
+                var url = "http://comp4976studentapi.azurewebsites.net/api/students/";
                 $.ajax(url, {
                     type: "GET",
                     headers: getHeaders()
